@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Image, Nav, Navbar } from "react-bootstrap";
+import {  Button, Container, Image, Nav, Navbar } from "react-bootstrap";
 import ModalLogin from "./ModalLogin";
 
 export default function MyNavBar() {
@@ -16,6 +16,8 @@ export default function MyNavBar() {
           </Navbar.Brand>
           <Nav className="me-5">
             <ModalLogin />
+            <span className="text-white mt-2 mx-3">Ricky Moreno</span>
+            <Button  className="color-celeste-claro border-0 mx-2"> cerrar sesión</Button>
           </Nav>
         </Container>
       </Navbar>

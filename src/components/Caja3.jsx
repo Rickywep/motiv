@@ -11,7 +11,7 @@ export default function Caja3() {
               <Image
                 className="imgRedondaIcono"
                 variant="top"
-                src="https://res.cloudinary.com/dtbfspso5/image/upload/v1641447344/icon-5359553_960_720_ljpyfq.png"
+                src="https://res.cloudinary.com/dtbfspso5/image/upload/v1641454166/1618942523622_rz1gof.jpg"
                 alt="iconos-perfil"
               />
               <div>Ricky Moreno</div>
@@ -30,7 +30,7 @@ export default function Caja3() {
             </div>
           </Card.Title>
           <div className="color-fondo">
-            <Card.Text className="text-center fs-4">BUEN TRABAJO</Card.Text>
+            <Card.Text className="text-center fs-4 color-texto-celeste">BUEN TRABAJO</Card.Text>
             <Card.Text className="text-center fs-6">
               Hizo un excelente trabajo en el proyecto! 
             </Card.Text>

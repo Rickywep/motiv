@@ -30,7 +30,7 @@ export default function Caja2() {
             </div>
           </Card.Title>
           <div className="color-fondo">
-            <Card.Text className="text-center fs-4">DIVERTIDO</Card.Text>
+            <Card.Text className="text-center fs-4 color-texto-celeste">DIVERTIDO</Card.Text>
             {/* <Card.Text className="text-center fs-6">
               Buen Trabajo en Equipo
             </Card.Text> */}

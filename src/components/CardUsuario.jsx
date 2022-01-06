@@ -14,14 +14,14 @@ export default function CardUsuario() {
           <Card.Img
             className="imgRedonda mt-2"
             variant="top"
-            src="https://res.cloudinary.com/dtbfspso5/image/upload/v1641442869/12575cb97a22f0f_qrs5bs.jpg"
+            src="https://res.cloudinary.com/dtbfspso5/image/upload/v1641454166/1618942523622_rz1gof.jpg"
           />
           <div className="d-flex justify-content-end me-5">
             <FontAwesomeIcon icon={faCamera} />
           </div>
 
           <Card.Body>
-            <Card.Title className="text-center">Usuario</Card.Title>
+            <Card.Title className="text-center">Ricky Moreno</Card.Title>
             <hr />
             <Card.Text className="d-flex flex-wrap justify-content-around">
                   <Nav.Link href="/home">New Mood</Nav.Link>
