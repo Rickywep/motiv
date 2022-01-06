@@ -81,7 +81,7 @@ export default function ModalLogin() {
                 type="submit"
                 value="Send"
               >
-                <b>Iniciar Seccion</b>
+                <b>Iniciar sesión</b>
               </Button>
             </div>
           </Form>

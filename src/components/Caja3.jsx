@@ -4,7 +4,10 @@ import { Card, Image } from "react-bootstrap";
 export default function Caja3() {
   return (
     <>
-      <Card className=" container  border-0 color-celeste" style={{ width: "50rem" }}>
+      <Card
+        className=" container  border-0 color-celeste"
+        style={{ width: "50rem" }}
+      >
         <Card.Body>
           <Card.Title className="bg-primary text-center text-white p-3 d-flex  justify-content-around color-celeste-claro">
             <div className="text-center">
@@ -16,9 +19,7 @@ export default function Caja3() {
               />
               <div>Ricky Moreno</div>
             </div>
-            <div className="mt-4">
-              <span className="fs-6">comento a</span>
-            </div>
+            <div className="mt-4 fs-6">comento a</div>
             <div className="text-center">
               <Image
                 className="imgRedondaIcono"
@@ -30,9 +31,11 @@ export default function Caja3() {
             </div>
           </Card.Title>
           <div className="color-fondo">
-            <Card.Text className="text-center fs-4 color-texto-celeste">BUEN TRABAJO</Card.Text>
+            <Card.Text className="text-center fs-4 color-texto-celeste">
+              BUEN TRABAJO
+            </Card.Text>
             <Card.Text className="text-center fs-6">
-              Hizo un excelente trabajo en el proyecto! 
+              Hizo un excelente trabajo en el proyecto!
             </Card.Text>
             <Card.Text className="p-3 text-muted d-flex justify-content-end">
               12 de abril
