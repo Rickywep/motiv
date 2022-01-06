@@ -19,7 +19,7 @@ export default function Caja2() {
               />
               <div>Florencia</div>
             </div>
-            <div className="mt-4 fs-6">omento a</div>
+            <div className="mt-4 fs-6">comento a</div>
             <div className="text-center">
               <Image
                 className="imgRedondaIcono"
