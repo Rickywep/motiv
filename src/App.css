@@ -1,40 +1,28 @@
-.App {
-  text-align: center;
+body{
+  margin: 0;
+  background-color: #9edef9;
+}
+.color-celeste{
+  background-color: #9edef9;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+/*Css aplicado al Navbar*/
+.fondo-nav{
+  background-color: #18809a;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.color-celeste-claro{
+  background-color: #17a2b8 !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/*Css Aplicado al Modal Login*/
+.fondo-titulo{
+  background-color: #125d70;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.color-boton-modal{
+  background-color: #1fa3c4 !important;
 }
 
 /*Css aplicado al componente CardUsuario*/
@@ -44,4 +32,16 @@
   margin: auto;
   border-radius:150px;
   border:10px solid #666;
+}
+
+/*Css aplicado a cada caja de comentario*/
+.imgRedondaIcono{
+  width:50px;
+  height:50px;
+  margin: auto;
+  border-radius:150px;
+}
+
+.color-fondo{
+  background-color: #f5f5f5;
 }
