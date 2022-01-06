@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+/*Css aplicado al componente CardUsuario*/
+.imgRedonda {
+  width:200px;
+  height:200px;
+  margin: auto;
+  border-radius:150px;
+  border:10px solid #666;
+}
