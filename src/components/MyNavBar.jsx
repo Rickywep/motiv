@@ -1,17 +1,11 @@
 import React from "react";
-import {
-  Button,
-  Container,
-  Image,
-  Nav,
-  Navbar,
-  NavDropdown,
-} from "react-bootstrap";
+import { Container, Image, Nav, Navbar } from "react-bootstrap";
+import ModalLogin from "./ModalLogin";
 
 export default function MyNavBar() {
   return (
     <div>
-      <Navbar bg="light" expand="lg">
+      <Navbar className="fondo-nav" expand="lg">
         <Container>
           <Navbar.Brand href="#home">
             <Image
@@ -21,7 +15,7 @@ export default function MyNavBar() {
             />
           </Navbar.Brand>
           <Nav className="me-5">
-            <Button as={Nav.Link}  href="" className="text-white"> login </Button>
+            <ModalLogin />
           </Nav>
         </Container>
       </Navbar>
