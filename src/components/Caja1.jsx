@@ -4,9 +4,9 @@ import { Card, Image } from "react-bootstrap";
 export default function Caja1() {
   return (
     <>
-      <Card className="container border-0" style={{ width: "50rem" }}>
+      <Card className="container border-0 color-celeste" style={{ width: "50rem" }}>
         <Card.Body>
-          <Card.Title className="bg-primary text-center text-white p-3 d-flex  justify-content-around">
+          <Card.Title className="text-center text-white p-3 d-flex  justify-content-around color-celeste-claro">
             <div className="text-center">
               <Image
                 className="imgRedondaIcono"
