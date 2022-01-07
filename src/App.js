@@ -1,16 +1,36 @@
 import './App.css';
-import CardUsuario from './components/CardUsuario';
-import MyNavBar from './components/MyNavBar';
-// import MyNavBar2 from './components/MyNavBar2';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import MyNavBar from "./components/MyNavBar";
+import Login from "./pages/Login";
+import { useState } from "react";
+import PerfilUsuario from './pages/Perfil';
+import Perfil from './pages/Perfil';
+import Home from './pages/Home';
 
-function App() {
+export default function App() {
+  const [user, setUser] = useState("");
   return (
-    <div >
-      <MyNavBar />
-      {/* <MyNavBar2 /> */}
-      <CardUsuario />
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/Login" >
+          <Login />
+        </Route>
+        <Route path="/Perfil" >
+          <Perfil />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
-export default App;
+
+
