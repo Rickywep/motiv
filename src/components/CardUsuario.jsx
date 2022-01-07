@@ -5,6 +5,9 @@ import { Card, Nav } from "react-bootstrap";
 import Caja1 from "./Caja1";
 import Caja2 from "./Caja2";
 import Caja3 from "./Caja3";
+import ModalFeedBack from "./ModalFeedBack";
+import ModalMood from "./ModalMood";
+
 
 export default function CardUsuario() {
   return (
@@ -24,8 +27,8 @@ export default function CardUsuario() {
             <Card.Title className="text-center">Ricky Moreno</Card.Title>
             <hr />
             <Card.Text className="d-flex flex-wrap justify-content-around">
-                  <Nav.Link href="/home">New Mood</Nav.Link>
-                  <Nav.Link eventKey="link-1">Feedback</Nav.Link>
+                  <ModalMood />
+                  <ModalFeedBack />
             </Card.Text>
           </Card.Body>
         </Card>
