@@ -43,8 +43,7 @@ export default function Formulario({ setUser }) {
   return (
     <Form
       onSubmit={handleSubmit}
-      className="card mt-5 mx-auto"
-      style={{ maxWidth: "500px" }}
+      className="card mt-5 mx-auto formulario"
     >
       <div className="fondo-titulo">
         <p className="p-2 mt-2 text-white ms-3">MotivWork</p>
