@@ -18,16 +18,14 @@ export default function MyNavLogin() {
             <Nav.Link className="mt-2 text-decoration-none text-white" as={NavLink} to="/perfil">
               Ricky Moreno
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/">
               <Button
                 active
-                className="ml-auto mt-1 color-celeste-claro border-0"
+                className="ml-auto  mt-2 color-celeste-claro border-0"
                 to="/"
                 as={NavLink}
               >
                 Cerrar sesión
               </Button>
-            </Nav.Link>
           </div>
         </div>
       </Navbar>
