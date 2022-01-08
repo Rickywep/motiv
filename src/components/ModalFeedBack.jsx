@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Col, Form, Modal, Row } from "react-bootstrap";
+import { Button,Form, Modal} from "react-bootstrap";
 import Swal from "sweetalert2";
 import { useRef } from "react";
 
@@ -18,7 +18,7 @@ export default function ModalFeedBack() {
       e.stopPropagation();
       Swal.fire({
         icon: "success",
-        title: "Logueo exitoso",
+        title: "Feed enviado con éxito",
         showConfirmButton: false,
         timer: 2000,
       });
@@ -28,20 +28,23 @@ export default function ModalFeedBack() {
       setValidated(true);
       Swal.fire({
         icon: "error",
-        title: "Campos vacios o incorrectos",
+        title: "Campos vacios o datos incorrectos",
       });
     }
   };
 
   return (
     <>
-      <Button className="border-0 bg-transparent text-primary" onClick={handleShow}>
-         FeedBack
+      <Button
+        className="border-0 bg-transparent text-primary"
+        onClick={handleShow}
+      >
+        FeedBack
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} size="lg" onHide={handleClose}>
         <Modal.Header className="fondo-titulo">
-          <Modal.Title className="text-white" >MotivWork</Modal.Title>
+          <Modal.Title className="text-white">FeedBack</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form
@@ -53,35 +56,53 @@ export default function ModalFeedBack() {
           >
             <div>
               <div className="card-body">
-                <Row>
-                  <Form.Group as={Col} md="12" controlId="validationCustom03">
-                    <Form.Label className="mt-3 ">Email</Form.Label>
-                    <Form.Control type="email" required name="email" placeholder="Ingresar su email"/>
-                    <Form.Control.Feedback type="invalid">
-                      Ingrese su Email por favor.
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Row>
-                <Row>
-                  <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label className="mt-3">Password</Form.Label>
-                    <Form.Control type="password" required name="contra" placeholder="ingrese su password" />
-                    <Form.Control.Feedback type="invalid">
-                      Ingrese su contraseña por favor.
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Row>
+                <Form.Label  >A quien va?</Form.Label>
+                <Form.Control
+                  type="text"
+                  required
+                  name="colega"
+                  placeholder="Buscar colega"
+                />
+                <Form.Label
+                  className="mt-2"
+                  controlId="floatingSelect"
+                  label="Works with selects"
+                >
+                  Que?
+                  <Form.Select
+                    name="opciones"
+                    required
+                    className="mt-2 mb-1"
+                    aria-label="Floating label select example"
+                    style={{ width: "720px" }}
+                  >
+                    <option value="1">Buen trabajo</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </Form.Select>
+                </Form.Label>
+                <Form.Label className="mt-2 mb-1">
+                  Por que?
+                  <Form.Control
+                    required
+                    name="comentario"
+                    className="mt-2"
+                    type="text"
+                    as="textarea"
+                    style={{ height: "100px", width: "720px" }}
+                  />
+                </Form.Label>
               </div>
             </div>
 
-            <div className="d-flex justify-content-center mt-2 ">
+            <div className="d-flex justify-content-end  me-3 mt-2 ">
               <Button
-                className=" text-white p-2  color-boton-modal border-0"
+                className=" text-white p-2 color-boton-modal border-0"
                 size="sm"
                 type="submit"
                 value="Send"
               >
-                <b>Iniciar sesión</b>
+                <b>Enviar FeedBack</b>
               </Button>
             </div>
           </Form>

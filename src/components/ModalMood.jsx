@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Col, Form, Modal, Row } from "react-bootstrap";
+import { Button, Form, Modal } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { useRef } from "react";
 
@@ -18,7 +18,7 @@ export default function ModalMood() {
       e.stopPropagation();
       Swal.fire({
         icon: "success",
-        title: "Logueo exitoso",
+        title: "Mood enviado con éxito",
         showConfirmButton: false,
         timer: 2000,
       });
@@ -28,20 +28,23 @@ export default function ModalMood() {
       setValidated(true);
       Swal.fire({
         icon: "error",
-        title: "Campos vacios o incorrectos",
+        title: "campos vacios o datos incorrectos",
       });
     }
   };
 
   return (
     <>
-      <Button className="border-0 bg-transparent text-primary" onClick={handleShow}>
-         New Mood
+      <Button
+        className="border-0 bg-transparent text-primary"
+        onClick={handleShow}
+      >
+        New Mood
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} size="lg" onHide={handleClose}>
         <Modal.Header className="fondo-titulo">
-          <Modal.Title className="text-white" >MotivWork</Modal.Title>
+          <Modal.Title className="text-white">Mood</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form
@@ -53,35 +56,32 @@ export default function ModalMood() {
           >
             <div>
               <div className="card-body">
-                <Row>
-                  <Form.Group as={Col} md="12" controlId="validationCustom03">
-                    <Form.Label className="mt-3 ">Email</Form.Label>
-                    <Form.Control type="email" required name="email" placeholder="Ingresar su email"/>
-                    <Form.Control.Feedback type="invalid">
-                      Ingrese su Email por favor.
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Row>
-                <Row>
-                  <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label className="mt-3">Password</Form.Label>
-                    <Form.Control type="password" required name="contra" placeholder="ingrese su password" />
-                    <Form.Control.Feedback type="invalid">
-                      Ingrese su contraseña por favor.
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Row>
+                <Form.Label className="mt-2 mb-2">
+                  {" "}
+                  Como te sientes hoy?
+                  <Form.Control
+                    required
+                    name="comentario"
+                    className="mt-2"
+                    type="text"
+                    as="textarea"
+                    style={{ height: "100px", width: "720px" }}
+                  />
+                </Form.Label>
+                <Form.Group className="mt-2" controlId="formBasicCheckbox">
+                  <Form.Check type="checkbox" name="checkbox" label="Anónimo" />
+                </Form.Group>
               </div>
             </div>
 
-            <div className="d-flex justify-content-center mt-2 ">
+            <div className="d-flex justify-content-end me-3 mt-2 ">
               <Button
-                className=" text-white p-2  color-boton-modal border-0"
+                className=" text-white p-2 color-boton-modal border-0"
                 size="sm"
                 type="submit"
                 value="Send"
               >
-                <b>Iniciar sesión</b>
+                <b>Enviar</b>
               </Button>
             </div>
           </Form>
