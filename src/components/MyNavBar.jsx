@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Container, Image, Navbar } from "react-bootstrap";
+import { Button, Image, Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 
@@ -7,7 +7,7 @@ export default function MyNavBar() {
   return (
     <div>
       <Navbar className="fondo-nav" expand="lg">
-        <Container>
+        <div className="container-fluid">
           <Navbar.Brand to="/" exact as={NavLink}>
             <Image
               style={{ width: "50px" }}
@@ -23,7 +23,7 @@ export default function MyNavBar() {
           >
             Login
           </Button>
-        </Container>
+        </div>
       </Navbar>
     </div>
   );

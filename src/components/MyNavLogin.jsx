@@ -1,12 +1,12 @@
 import React from "react";
-import { Button, Container, Image, Nav, Navbar } from "react-bootstrap";
+import { Button, Image, Nav, Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 export default function MyNavLogin() {
   return (
     <div>
       <Navbar className="fondo-nav" expand="lg">
-        <Container>
+        <div className="container-fluid">
           <Navbar.Brand to="/" exact as={NavLink}>
             <Image
               style={{ width: "50px" }}
@@ -29,7 +29,7 @@ export default function MyNavLogin() {
               </Button>
             </Nav.Link>
           </div>
-        </Container>
+        </div>
       </Navbar>
     </div>
   );
