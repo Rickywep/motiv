@@ -1,10 +1,8 @@
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Card, Nav } from "react-bootstrap";
-import Caja1 from "./Caja1";
-import Caja2 from "./Caja2";
-import Caja3 from "./Caja3";
+import { Card } from "react-bootstrap";
+import Cajas from "./Cajas";
 import ModalFeedBack from "./ModalFeedBack";
 import ModalMood from "./ModalMood";
 
@@ -33,11 +31,7 @@ export default function CardUsuario() {
           </Card.Body>
         </Card>
       </div>
-      <div>
-        <Caja1 />
-        <Caja2 />
-        <Caja3 />
-      </div>
+      <Cajas />
     </div>
   );
 }
