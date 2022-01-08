@@ -1,3 +1,5 @@
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Card, Image } from "react-bootstrap";
 
@@ -6,7 +8,6 @@ export default function Caja2() {
     <>
       <Card
         className="container  border-0 color-celeste"
-        style={{ width: "50rem" }}
       >
         <Card.Body>
           <Card.Title className="bg-primary text-center text-white p-3 d-flex  justify-content-around color-celeste-claro">
@@ -19,7 +20,11 @@ export default function Caja2() {
               />
               <div>Florencia</div>
             </div>
-            <div className="mt-4 fs-6">comento a</div>
+            <div className="mt-4 fs-6">
+              comento a <br />
+              <FontAwesomeIcon icon={faArrowRight} />
+            </div>
+
             <div className="text-center">
               <Image
                 className="imgRedondaIcono"
