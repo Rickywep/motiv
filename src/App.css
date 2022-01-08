@@ -35,6 +35,20 @@ body{
 }
 
 /*Css aplicado a cada caja de comentario*/
+.cajacomentario{
+  width: 900px;
+}
+@media (max-width: 768px) {
+  .cajacomentario {
+    width: 800px;
+  }
+}
+@media (max-width: 425px) {
+  .cajacomentario {
+    width: 600px;
+  }
+}
+
 .imgRedondaIcono{
   width:50px;
   height:50px;
@@ -48,4 +62,71 @@ body{
 
 .color-texto-celeste{
   color: #18809a;
+}
+
+/*css aplicado a componente Cajas*/
+@media (max-width: 768px) {
+  .cajaMobile {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+  }
+}
+@media (max-width: 425px) {
+  .cajaMobile {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+  }
+}
+
+/*Css aplicado al Formulario*/
+.formulario{
+  width: 600px;
+}
+@media (max-width: 768px) {
+  .formulario{
+    width: 400px;
+  }
+}
+@media (max-width: 425px) {
+  .formulario{
+    width: 300px;
+  }
+}
+
+/*css aplicado al ModalMood modalFeed*/
+.modalResponsive{
+  width: 720px;
+  height: 100px;
+}
+@media (max-width: 768px) {
+  .modalResponsive{
+    width: 420px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 425px) {
+  .modalResponsive{
+    width: 320px;
+    height: 100px;
+  }
+}
+
+.modalOptionResponsive{
+  width: 720px;
+}
+@media (max-width: 768px) {
+  .modalOptionResponsive{
+    width: 420px;
+  }
+}
+
+@media (max-width: 425px) {
+  .modalOptionResponsive{
+    width: 320px;
+  }
 }
