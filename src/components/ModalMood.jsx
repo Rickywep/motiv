@@ -43,7 +43,7 @@ export default function ModalMood() {
       </Button>
 
       <Modal show={show} size="lg" onHide={handleClose}>
-        <Modal.Header className="fondo-titulo">
+        <Modal.Header className="fondo-titulo" closeButton>
           <Modal.Title className="text-white">Mood</Modal.Title>
         </Modal.Header>
         <Modal.Body>

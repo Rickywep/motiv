@@ -43,7 +43,7 @@ export default function ModalFeedBack() {
       </Button>
 
       <Modal show={show} size="lg" onHide={handleClose}>
-        <Modal.Header className="fondo-titulo">
+        <Modal.Header className="fondo-titulo" closeButton>
           <Modal.Title className="text-white">FeedBack</Modal.Title>
         </Modal.Header>
         <Modal.Body>
