@@ -62,10 +62,9 @@ export default function ModalMood() {
                   <Form.Control
                     required
                     name="comentario"
-                    className="mt-2"
+                    className="mt-2 modalResponsive"
                     type="text"
                     as="textarea"
-                    style={{ height: "100px", width: "720px" }}
                   />
                 </Form.Label>
                 <Form.Group className="mt-2" controlId="formBasicCheckbox">

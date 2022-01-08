@@ -72,9 +72,8 @@ export default function ModalFeedBack() {
                   <Form.Select
                     name="opciones"
                     required
-                    className="mt-2 mb-1"
+                    className="mt-2 mb-1 modalOptionResponsive"
                     aria-label="Floating label select example"
-                    style={{ width: "720px" }}
                   >
                     <option value="1">Buen trabajo</option>
                     <option value="2">Two</option>
@@ -85,11 +84,10 @@ export default function ModalFeedBack() {
                   Por que?
                   <Form.Control
                     required
-                    name="comentario"
-                    className="mt-2"
+                    name="comentario "
+                    className="mt-2 modalResponsive"
                     type="text"
                     as="textarea"
-                    style={{ height: "100px", width: "720px" }}
                   />
                 </Form.Label>
               </div>
