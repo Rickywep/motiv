@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
 
 const admin = {
-  email: "rik@correo.com",
+  email: "rickymoreno@correo.com",
   name: "rick",
   password: "123",
 };
