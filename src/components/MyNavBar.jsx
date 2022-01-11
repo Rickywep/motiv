@@ -1,7 +1,6 @@
 import React from "react";
-import { Button, Image, Navbar } from "react-bootstrap";
+import { Button, Image, Nav, Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-
 
 export default function MyNavBar() {
   return (
@@ -15,14 +14,20 @@ export default function MyNavBar() {
               alt=""
             />
           </Navbar.Brand>
-          <Button
-            active
-            className="ml-auto color-celeste-claro border-0"
-            to="login"
-            as={NavLink}
-          >
-            Login
-          </Button>
+          <div>
+            <div className="d-flex flex-wrap">
+              <Nav.Link as={NavLink} to="login">
+                <Button active className="ml-auto color-celeste-claro border-0">
+                  Login
+                </Button>
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="LoginAdmin">
+                <Button active className="ml-auto color-celeste-claro border-0">
+                  Admin
+                </Button>
+              </Nav.Link>
+            </div>
+          </div>
         </div>
       </Navbar>
     </div>
