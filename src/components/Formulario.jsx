@@ -3,7 +3,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
 
-const admin = {
+const usuario = {
   email: "rickymoreno@correo.com",
   name: "rick",
   password: "123",
@@ -22,7 +22,7 @@ export default function Formulario({ setUser }) {
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     event.preventDefault();
-    if (input.email === admin.email && input.password === admin.password) {
+    if (input.email === usuario.email && input.password === usuario.password) {
       Swal.fire({
         icon: "success",
         title: "Logueo exitoso",
@@ -30,7 +30,7 @@ export default function Formulario({ setUser }) {
         timer: 2000,
       });
       history.push("/Perfil");
-      setUser(admin.name);
+      setUser(usuario.name);
     } else {
       Swal.fire({
         icon: "error",
@@ -41,10 +41,7 @@ export default function Formulario({ setUser }) {
   };
 
   return (
-    <Form
-      onSubmit={handleSubmit}
-      className="card mt-5 mx-auto formulario"
-    >
+    <Form onSubmit={handleSubmit} className="card mt-5 mx-auto formulario">
       <div className="fondo-titulo">
         <p className="p-2 mt-2 text-white ms-3">MotivWork</p>
       </div>
@@ -68,10 +65,14 @@ export default function Formulario({ setUser }) {
             placeholder="Password"
             required
           />
-              </Form.Group>
-              <Button className="d-flex mx-auto mt-2  text-white p-2  color-boton-modal border-0" size="sm"  type="submit">
-              Iniciar sesión
-            </Button>
+        </Form.Group>
+        <Button
+          className="d-flex mx-auto mt-2  text-white p-2  color-boton-modal border-0"
+          size="sm"
+          type="submit"
+        >
+          Iniciar sesión
+        </Button>
       </div>
     </Form>
   );
