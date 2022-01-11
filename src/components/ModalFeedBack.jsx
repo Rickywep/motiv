@@ -7,9 +7,16 @@ export default function ModalFeedBack() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [input, setInput] = useState({});
 
   const [validated, setValidated] = useState(false);
   const form = useRef();
+
+  const handleChange = (event) => {
+    const { value, name } = event.target;
+    const newInput = { ...input, [name]: value };
+    setInput(newInput);
+  };
 
   const sendEmail = (e) => {
     const form = e.currentTarget;
@@ -58,18 +65,21 @@ export default function ModalFeedBack() {
               <div className="card-body">
                 <Form.Label  >A quien va?</Form.Label>
                 <Form.Control
+                  onChange={handleChange}
                   type="text"
                   required
                   name="colega"
                   placeholder="Buscar colega"
                 />
                 <Form.Label
+                  onChange={handleChange}
                   className="mt-2"
                   controlId="floatingSelect"
                   label="Works with selects"
                 >
                   Que?
                   <Form.Select
+                    onChange={handleChange}
                     name="opciones"
                     required
                     className="mt-2 mb-1 modalOptionResponsive"
@@ -83,6 +93,7 @@ export default function ModalFeedBack() {
                 <Form.Label className="mt-2 mb-1">
                   Por que?
                   <Form.Control
+                    onChange={handleChange}
                     required
                     name="comentario "
                     className="mt-2 modalResponsive"

@@ -7,9 +7,16 @@ export default function ModalMood() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [input, setInput] = useState({});
 
   const [validated, setValidated] = useState(false);
   const form = useRef();
+
+  const handleChange = (event) => {
+    const { value, name } = event.target;
+    const newInput = { ...input, [name]: value };
+    setInput(newInput);
+  };
 
   const sendEmail = (e) => {
     const form = e.currentTarget;
@@ -60,6 +67,7 @@ export default function ModalMood() {
                   {" "}
                   Como te sientes hoy?
                   <Form.Control
+                    onChange={handleChange}
                     required
                     name="comentario"
                     className="mt-2 modalResponsive"
@@ -68,7 +76,7 @@ export default function ModalMood() {
                   />
                 </Form.Label>
                 <Form.Group className="mt-2" controlId="formBasicCheckbox">
-                  <Form.Check type="checkbox" name="checkbox" label="Anónimo" />
+                  <Form.Check onChange={handleChange} type="checkbox" name="checkbox" label="Anónimo" />
                 </Form.Group>
               </div>
             </div>
