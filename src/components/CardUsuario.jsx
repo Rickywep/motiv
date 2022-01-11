@@ -9,9 +9,9 @@ import ModalMood from "./ModalMood";
 
 export default function CardUsuario() {
   return (
-    <div className="container d-flex flex-wrap justify-content-around mt-2">
+    <div className="container d-flex flex-wrap justify-content-around mt-2 mb-5">
       <div>
-        <Card className="mt-3" style={{ width: "18rem" }}>
+        <Card className="mt-4" style={{ width: "18rem" }}>
           <Card.Img
             className="imgRedonda mt-2"
             variant="top"
