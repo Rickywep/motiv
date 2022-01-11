@@ -52,14 +52,14 @@ export default function Formulario({ setUser }) {
             name="email"
             onChange={handleChange}
             type="email"
-            placeholder="Ingresar Email"
+            placeholder="Ingresar su Email"
             required
           />
         </Form.Group>
         <Form.Group className="mb-4" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
-            name="password"
+            name="Ingresar su password"
             onChange={handleChange}
             type="password"
             placeholder="Password"

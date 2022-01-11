@@ -54,7 +54,7 @@ export default function FormAdmin() {
             name="email"
             onChange={handleChange}
             type="email"
-            placeholder="Ingresar Email"
+            placeholder="Ingresar su Email"
             required
           />
         </Form.Group>
@@ -64,7 +64,7 @@ export default function FormAdmin() {
             name="password"
             onChange={handleChange}
             type="password"
-            placeholder="Password"
+            placeholder="Ingresar su Password"
             required
           />
               </Form.Group>
