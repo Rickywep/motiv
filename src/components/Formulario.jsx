@@ -52,7 +52,7 @@ export default function Formulario({ setUser }) {
             name="email"
             onChange={handleChange}
             type="email"
-            placeholder="Enter email"
+            placeholder="Ingresar Email"
             required
           />
         </Form.Group>
