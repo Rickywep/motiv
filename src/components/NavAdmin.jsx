@@ -6,7 +6,7 @@ export default function NavAdmin() {
   return (
     <div>
       <Navbar className="fondo-nav" expand="lg">
-        <div className="container-fluid">
+        <div className="container-fluid d-flex justify-content-around">
           <Navbar.Brand className="d-flex flex-wrap" to="/" exact as={NavLink}>
             <Image
               style={{ width: "50px" }}
