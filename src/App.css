@@ -6,7 +6,6 @@ body{
   background-color: #9edef9;
 }
 
-
 /*Css aplicado al Navbar*/
 .fondo-nav{
   background-color: #18809a;
@@ -80,6 +79,11 @@ body{
       justify-content: center;
 
   }
+}
+
+.scroll{
+  overflow: scroll;
+  height: 900px
 }
 
 /*Css aplicado al Formulario*/
