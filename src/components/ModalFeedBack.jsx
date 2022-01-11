@@ -85,9 +85,9 @@ export default function ModalFeedBack() {
                     className="mt-2 mb-1 modalOptionResponsive"
                     aria-label="Floating label select example"
                   >
-                    <option value="1">Buen trabajo</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="1">BUEN TRABAJO</option>
+                    <option value="2">DIVERTIDO</option>
+                    <option value="3">AMABLE</option>
                   </Form.Select>
                 </Form.Label>
                 <Form.Label className="mt-2 mb-1">
