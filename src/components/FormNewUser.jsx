@@ -44,6 +44,9 @@ export default function FormNewUser() {
       onSubmit={sendEmail}
       className="card mt-5 mx-auto formulario"
     >
+      <div className="fondo-titulo">
+        <p className="p-2 mt-2 text-white ms-3">MotivWork - Crear Usuario</p>
+      </div>
       <div>
         <div className="card-body">
           <Form.Group className="mb-4" controlId="formBasicEmail">

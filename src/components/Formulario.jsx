@@ -47,7 +47,7 @@ export default function Formulario({ setUser }) {
       </div>
       <div className="p-4">
         <Form.Group className="mb-4" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label>Email</Form.Label>
           <Form.Control
             name="email"
             onChange={handleChange}
