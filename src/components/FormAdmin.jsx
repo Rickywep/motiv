@@ -25,7 +25,7 @@ export default function FormAdmin() {
     if (input.email === admin.email && input.password === admin.password) {
       Swal.fire({
         icon: "success",
-        title: "Hola Admin",
+        title: "Bienvenido Admin",
         showConfirmButton: false,
         timer: 2000,
       });
