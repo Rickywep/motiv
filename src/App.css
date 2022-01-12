@@ -64,26 +64,9 @@ body{
 }
 
 /*css aplicado a componente Cajas*/
-@media (max-width: 768px) {
-  .cajaMobile {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-
-  }
-}
-@media (max-width: 425px) {
-  .cajaMobile {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-
-  }
-}
-
 .scroll{
-  overflow: scroll;
-  height: 900px
+  width: 900px !important;
+  height: 900px !important;
 }
 
 /*Css aplicado al Formulario*/
