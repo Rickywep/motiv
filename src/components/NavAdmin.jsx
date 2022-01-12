@@ -42,8 +42,9 @@ export default function NavAdmin() {
               Admin
             </Nav.Link>
             <Button
+              size="sm"
               active
-              className="ml-auto  mt-2 color-celeste-claro border-0"
+              className="ml-auto mt-2 p-2 color-celeste-claro border-0"
               to="/"
               as={NavLink}
             >
