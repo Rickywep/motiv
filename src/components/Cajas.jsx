@@ -1,4 +1,5 @@
 import React from "react";
+import { Scrollbars } from "react-custom-scrollbars";
 import Caja from "./Caja";
 const usuarios = [
   {
@@ -149,10 +150,12 @@ const usuarios = [
 
 export default function Cajas() {
   return (
-    <div className="cajaMobile cajacomentario scroll">
-      {usuarios.map((usuario, id) => (
-        <Caja key={id} data={usuario} />
-      ))}
-    </div>
+    <Scrollbars className="scroll" >
+      <div>
+        {usuarios.map((usuario, id) => (
+          <Caja key={id} data={usuario} />
+        ))}
+      </div>
+    </Scrollbars>
   );
 }
