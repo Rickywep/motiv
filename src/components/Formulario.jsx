@@ -3,16 +3,27 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
 
-const  usuario= {
-  email: "rickymoreno@correo.com",
+const  admin= {
+  email: "admin@admin",
   name: "admin",
-  password: "123",
+  password: "admin",
 };
 
 export default function Formulario() {
   const [input, setInput] = useState({});
   const history = useHistory();
+  
+  
+  // usuarios en local Storage
+  let usuariosIniciales = JSON.parse(localStorage.getItem("usuarios"));
+  if (!usuariosIniciales) {
+    usuariosIniciales = [];
+  }
+  
+  // Array de usuario
+  const [usuarios, setUsuarios] = useState(usuariosIniciales);
 
+  
   const handleChange = (event) => {
     const { value, name } = event.target;
     const newInput = { ...input, [name]: value };
@@ -22,7 +33,7 @@ export default function Formulario() {
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     event.preventDefault();
-    if (input.email === usuario.email && input.password === usuario.password) {
+    if (input.email === usuarios.email && input.password === usuarios.password) {
       Swal.fire({
         icon: "success",
         title: "Bienvenido Usuario",
@@ -30,6 +41,14 @@ export default function Formulario() {
         timer: 2000,
       });
       history.push("/Perfil");
+    } else if(input.email === admin.email && input.password === admin.password) {
+      Swal.fire({
+        icon: "success",
+        title: "Bienvenido admin",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+      history.push("/Admin");
     } else {
       Swal.fire({
         icon: "error",
@@ -38,7 +57,6 @@ export default function Formulario() {
     }
     form.reset();
   };
-
   return (
     <Form
       onSubmit={handleSubmit}
