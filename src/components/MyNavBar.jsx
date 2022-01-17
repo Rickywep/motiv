@@ -21,11 +21,6 @@ export default function MyNavBar() {
                   Login
                 </Button>
               </Nav.Link>
-              <Nav.Link as={NavLink} to="LoginAdmin">
-                <Button active className="ml-auto color-celeste-claro border-0">
-                  Admin
-                </Button>
-              </Nav.Link>
             </div>
           </div>
         </div>
