@@ -1,7 +1,7 @@
 import { Form, Button } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Swal from "sweetalert2";
-import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
 
 export default function FormNewUser() {
   // state de validacion
@@ -9,45 +9,19 @@ export default function FormNewUser() {
 
   // state de usuarios
   const [user, setUser] = useState({
-    userName: "",
-    userSurname: "",
+    nombre: "",
     email: "",
     password: "",
-    rol: "",
   });
 
-  // usuarios en local Storage
-  let usuariosIniciales = JSON.parse(localStorage.getItem("usuarios"));
-  if (!usuariosIniciales) {
-    usuariosIniciales = [];
-  }
-
-  // Arreglo de usuario
-  const [usuarios, setUsuarios] = useState(usuariosIniciales);
-
-  // use Effect para realizar ciertas operaciones cuando el esta cambia
-  useEffect(() => {
-    if (usuariosIniciales) {
-      localStorage.setItem("usuarios", JSON.stringify(usuarios));
-    } else {
-      localStorage.setItem("usuarios", JSON.stringify([]));
-    }
-  }, [usuarios]);
-
-  // Funcion que tome las citas actuales y agregue la nueva
-  const crearUsuario = (usuario) => {
-    setUsuarios([...usuarios, usuario]);
+  const crearUsuario = async () => {
+    await axios.post("http://localhost:4000/api/usuarios", {
+      nombre,
+      email,
+      password,
+    });
   };
 
-  //Funcion para eliminar una cita por su id
-  // const handleDelete = (id) => {
-  //   const cerrarSeccion = usuarios.filter((usuario) => usuario.id !== id);
-  //   if (usuarios.id !== id) {
-  //     setUsuarios(cerrarSeccion);
-  //   }
-  // };
-
-  // Funcion que se ejecuta cada que el usuario escribe en un  input
   const handleChange = (e) => {
     setUser({
       ...user,
@@ -56,7 +30,7 @@ export default function FormNewUser() {
   };
 
   //Extraer los valores
-  const { userName, userSurname, email, password, rol } = user;
+  const { nombre, email, password } = user;
 
   // cuando el usuario presiona  el enviar cita
   const handleSubmit = (event) => {
@@ -73,16 +47,10 @@ export default function FormNewUser() {
         timer: 2000,
       });
 
-      //asignar un ID
-      user.id = uuidv4();
-
-      // crear una cita
-      crearUsuario(user);
-
+      crearUsuario();
       //Reiniciar el form
       setUser({
-        userName: "",
-        userSurname: "",
+        nombre: "",
         email: "",
         password: "",
         rol: "",
@@ -110,25 +78,15 @@ export default function FormNewUser() {
           <Form.Group className="mb-4" controlId="formBasicEmail">
             <Form.Label>Nombre</Form.Label>
             <Form.Control
-              name="userName"
+              name="nombre"
               required
               type="text"
               placeholder="Ingresar nombre del usuario"
               onChange={handleChange}
-              value={userName}
+              value={nombre}
             />
           </Form.Group>
-          <Form.Group className="mb-4" controlId="formBasicEmail">
-            <Form.Label>Apellido</Form.Label>
-            <Form.Control
-              name="userSurname"
-              required
-              type="text"
-              placeholder="Ingresar apellido del usuario"
-              onChange={handleChange}
-              value={userSurname}
-            />
-          </Form.Group>
+
           <Form.Group className="mb-4" controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control
@@ -151,28 +109,6 @@ export default function FormNewUser() {
               value={password}
             />
           </Form.Group>
-          <Form.Label>Rol</Form.Label>
-          <Form.Select
-            
-            name="rol"
-            onChange={handleChange}
-            className="mt-2"
-            aria-label="Floating label select example"
-            value={rol}
-          >
-            <option value="">Elegir Rol</option>
-            <option value="usuario">usuario</option>
-            <option value="admin">admin</option>
-          </Form.Select>
-          {/* <Form.Group className="mt-2" controlId="formBasicCheckbox">
-            <Form.Check
-              className="mt-5"
-              onChange={handleChange}
-              name="checkbox"
-              label="¿Es Admin? "
-              value={checkbox}
-            />
-          </Form.Group> */}
         </div>
       </div>
 

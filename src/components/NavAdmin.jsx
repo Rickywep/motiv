@@ -19,11 +19,11 @@ export default function NavAdmin() {
             <div className="d-flex flex-wrap mt-2">
               <Nav.Link
                 as={NavLink}
-                to="/NewUser"
+                to="/Users"
                 className="text-white"
                 href="#action1"
               >
-                Crear Usuario
+                Usuario
               </Nav.Link>
               <Nav.Link
                 as={NavLink}

@@ -10,8 +10,8 @@ import Perfil from './pages/Perfil';
 import Home from './pages/Home';
 import Admin from './pages/Admin';
 import LoginAdmin from './pages/LoginAdmin';
-import NewUser from './pages/NewUser';
 import NewMood from './pages/NewMood';
+import Users from './pages/Users';
 
 export default function App() {
   return (
@@ -32,8 +32,8 @@ export default function App() {
         <Route path="/Admin" >
           <Admin />
         </Route>
-        <Route path="/NewUser" >
-          <NewUser />
+        <Route path="/Users" >
+          <Users />
         </Route>
         <Route path="/NewMood" >
           <NewMood />
