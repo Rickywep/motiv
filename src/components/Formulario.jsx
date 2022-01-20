@@ -4,11 +4,6 @@ import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
-const admin = {
-  email: "admin@admin",
-  name: "admin",
-  password: "admin",
-};
 
 export default function Formulario() {
   const [input, setInput] = useState({
