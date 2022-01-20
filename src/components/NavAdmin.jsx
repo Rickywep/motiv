@@ -45,7 +45,7 @@ export default function NavAdmin() {
               size="sm"
               active
               className="ml-auto mt-2 p-2 color-celeste-claro border-0"
-              to="/"
+              to="/login"
               as={NavLink}
             >
               Cerrar sesión
