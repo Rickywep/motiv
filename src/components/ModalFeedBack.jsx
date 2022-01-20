@@ -1,21 +1,42 @@
 import React, { useState } from "react";
-import { Button,Form, Modal} from "react-bootstrap";
+import { Button, Form, Modal } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { useRef } from "react";
+import axios from "axios";
 
 export default function ModalFeedBack() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [input, setInput] = useState({});
 
   const [validated, setValidated] = useState(false);
   const form = useRef();
 
-  const handleChange = (event) => {
-    const { value, name } = event.target;
-    const newInput = { ...input, [name]: value };
-    setInput(newInput);
+  // state de Feeds
+  const [feed, setFeed] = useState({
+    colega: "",
+    categoria: "",
+    contenido: "",
+  });
+
+  //Extraer los valores
+  const { colega, categoria, contenido } = feed;
+
+  // Crear contenido
+  const crearFeedBacks = async () => {
+    await axios.post("http://localhost:4000/api/feedbacks", {
+      colega,
+      categoria,
+      contenido,
+    });
+  };
+
+  // capturar los input del usuario
+  const handleChange = (e) => {
+    setFeed({
+      ...ModalFeedBack,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const sendEmail = (e) => {
@@ -25,17 +46,24 @@ export default function ModalFeedBack() {
       e.stopPropagation();
       Swal.fire({
         icon: "success",
-        title: "Feed enviado con éxito",
+        title: "FeedBack enviado con éxito",
         showConfirmButton: false,
         timer: 2000,
       });
-      form.reset();
-      setValidated(false); //
+      crearFeedBacks();
+
+      //Reiniciar el form
+      setFeed({
+        colega: "",
+        categoria: "",
+        contenido: "",
+      });
+      setValidated(false); 
     } else {
       setValidated(true);
       Swal.fire({
         icon: "error",
-        title: "Campos vacios o datos incorrectos",
+        title: "campos vacios o datos incorrectos",
       });
     }
   };
@@ -63,12 +91,13 @@ export default function ModalFeedBack() {
           >
             <div>
               <div className="card-body">
-                <Form.Label  >A quien va?</Form.Label>
+                <Form.Label>A quien va?</Form.Label>
                 <Form.Control
                   onChange={handleChange}
                   type="text"
                   required
                   name="colega"
+                  value={colega}
                   placeholder="Buscar colega"
                 />
                 <Form.Label
@@ -84,10 +113,11 @@ export default function ModalFeedBack() {
                     required
                     className="mt-2 mb-1 modalOptionResponsive"
                     aria-label="Floating label select example"
+                    
                   >
-                    <option value="1">BUEN TRABAJO</option>
-                    <option value="2">DIVERTIDO</option>
-                    <option value="3">AMABLE</option>
+                    <option value={categoria}>BUEN TRABAJO</option>
+                    <option value={categoria}>DIVERTIDO</option>
+                    <option value={categoria}>AMABLE</option>
                   </Form.Select>
                 </Form.Label>
                 <Form.Label className="mt-2 mb-1">
@@ -95,7 +125,8 @@ export default function ModalFeedBack() {
                   <Form.Control
                     onChange={handleChange}
                     required
-                    name="comentario "
+                    name="contenido"
+                    value={contenido}
                     className="mt-2 modalResponsive"
                     type="text"
                     as="textarea"
