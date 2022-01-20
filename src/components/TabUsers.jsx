@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Table } from "react-bootstrap";
+import TablaUsuarios from "./TablaUsuarios";
+import Scrollbars from "react-custom-scrollbars";
 
 export const TabUsers = () => {
   const [users, setUsers] = useState([]);
@@ -13,5 +16,23 @@ export const TabUsers = () => {
     getUsers();
   }, []);
 
-  return <div>tabla usuarios</div>;
+  return (
+    <div className="mt-5 d-flex  justify-content-center">
+      <Scrollbars  className="scroll">
+      <Table responsive="sm" striped bordered hover>
+        <thead>
+          <tr className="p-1">
+            <th>Nombre</th>
+            <th>rol</th>
+            <th>Email</th>
+            <th>Registro</th>
+          </tr>
+        </thead>
+      </Table>
+      {users.map((user, id) => (
+        <TablaUsuarios user={user} key={id} />
+      ))}
+    </Scrollbars>
+    </div>
+  );
 };
