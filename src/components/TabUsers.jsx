@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Table } from "react-bootstrap";
-import TablaUsuarios from "./TablaUsuarios";
 import Scrollbars from "react-custom-scrollbars";
+import TablaBack from "./TablaBack";
 
 export const TabUsers = () => {
   const [users, setUsers] = useState([]);
@@ -30,7 +30,7 @@ export const TabUsers = () => {
         </thead>
       </Table>
       {users.map((user, id) => (
-        <TablaUsuarios user={user} key={id} />
+        <TablaBack user={user} key={id} />
       ))}
     </Scrollbars>
     </div>

@@ -2,7 +2,7 @@ import React from "react";
 import { Table } from "react-bootstrap";
 
 
-export default function TablaUsuarios({ user }) {
+export default function TablaBack({ user }) {
   const { nombre, email, registro, rol } = user;
   return (
       <Table striped bordered hover responsive="sm">
