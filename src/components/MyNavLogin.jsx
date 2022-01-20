@@ -21,7 +21,7 @@ export default function MyNavLogin() {
               <Button
                 active
                 className="ml-auto  mt-2 color-celeste-claro border-0"
-                to="/"
+                to="/Login"
                 as={NavLink}
               >
                 Cerrar sesión

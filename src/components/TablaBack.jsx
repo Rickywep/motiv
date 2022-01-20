@@ -5,7 +5,7 @@ import { Table } from "react-bootstrap";
 export default function TablaBack({ user }) {
   const { nombre, email, registro, rol } = user;
   return (
-      <Table striped bordered hover responsive="sm">
+      <Table striped bordered hover responsive="md">
         <tbody>
           <tr>
             <td>{nombre}</td>
