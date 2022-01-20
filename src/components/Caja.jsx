@@ -3,8 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Card, Image } from "react-bootstrap";
 
-export default function Caja({data}) {
-    const {usuarioA , usuarioB, fotoA, fotoB, mood, descripcion, fecha} = data
+export default function Caja({ data }) {
+  const {creador, colega, contenido, categoria, registro } = data
+
   return (
     <>
       <Card
@@ -16,10 +17,10 @@ export default function Caja({data}) {
               <Image
                 className="imgRedondaIcono"
                 variant="top"
-                src={fotoA}
+                src={creador.img}
                 alt="iconos-perfil"
               />
-                          <div>{ usuarioA}</div>
+                          <div>{creador.nombre }</div>
             </div>
             <div className="mt-4 fs-6">comento a
               <span className="ms-2"><FontAwesomeIcon icon={faArrowRight} /> </span>
@@ -28,21 +29,21 @@ export default function Caja({data}) {
               <Image
                 className="imgRedondaIcono"
                 variant="top"
-                src={fotoB}
+                src={colega.img}
                 alt="iconos-perfil"
               />
-                          <div>{ usuarioB}</div>
+                          <div>{colega.nombre}</div>
             </div>
           </Card.Title>
           <div className="color-fondo">
             <Card.Text className="text-center fs-4 color-texto-celeste">
-              {mood}
+              {categoria}
             </Card.Text>
             <Card.Text className="text-center fs-6">
-              {descripcion}
+              {contenido}
             </Card.Text>
             <Card.Text className="p-3 text-muted d-flex justify-content-end">
-              {fecha}
+              {registro}
             </Card.Text>
           </div>
         </Card.Body>
