@@ -2,20 +2,41 @@ import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { useRef } from "react";
+import axios from "axios";
 
 export default function ModalMood() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [input, setInput] = useState({});
+
 
   const [validated, setValidated] = useState(false);
   const form = useRef();
 
-  const handleChange = (event) => {
-    const { value, name } = event.target;
-    const newInput = { ...input, [name]: value };
-    setInput(newInput);
+  
+  // state de moods
+  const [mood, setMood] = useState({
+    contenido: "",
+    anonimo:"" // TODO: consultar como tomar el valor de un checkbox para que sea anonimo.
+  });
+
+
+  //Extraer los valores
+  const { contenido, anonimo } = mood;
+
+// Crear contenido
+  const crearContenido = async () => {
+    await axios.post("http://localhost:4000/api/feedbacks", {
+      contenido,
+    });
+  };
+
+  // capturar los input del usuario 
+  const handleChange = (e) => {
+    setMood({
+      ...ModalMood,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const sendEmail = (e) => {
@@ -29,7 +50,12 @@ export default function ModalMood() {
         showConfirmButton: false,
         timer: 2000,
       });
-      form.reset();
+      crearContenido();   
+      //Reiniciar el form
+      setMood({
+        contenido: "",
+        anonimo:""
+      });
       setValidated(false); //
     } else {
       setValidated(true);
@@ -69,14 +95,15 @@ export default function ModalMood() {
                   <Form.Control
                     onChange={handleChange}
                     required
-                    name="comentario"
+                    name="contenido"
                     className="mt-2 modalResponsive"
                     type="text"
+                    value={contenido}
                     as="textarea"
                   />
                 </Form.Label>
                 <Form.Group className="mt-2" controlId="formBasicCheckbox">
-                  <Form.Check onChange={handleChange} type="checkbox" name="checkbox" label="Anónimo" />
+                  <Form.Check onChange={handleChange} type="checkbox" name="anonimo" value={anonimo} label="Anónimo" />
                 </Form.Group>
               </div>
             </div>
