@@ -15,7 +15,7 @@ export default function CardUsuario() {
           <Card.Img
             className="imgRedonda mt-2"
             variant="top"
-            src="https://res.cloudinary.com/dtbfspso5/image/upload/v1641454166/1618942523622_rz1gof.jpg"
+            src="https://res.cloudinary.com/dtbfspso5/image/upload/v1643139175/descarga_ovdszg.jpg"
           />
           <div className="d-flex justify-content-end me-5">
             <FontAwesomeIcon icon={faCamera} />
