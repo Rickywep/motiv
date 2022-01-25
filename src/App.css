@@ -117,3 +117,16 @@ body{
     width: 320px;
   }
 }
+
+/*css aplicado a la tabla de usuarios*/
+.scroll-usuarios{
+  width: 600px !important;
+  height: 700px !important;
+}
+
+@media (max-width: 425px) {
+  .scroll-usuarios{
+    width: 300px !important;
+    height: 700px !important;
+  }
+}

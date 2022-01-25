@@ -17,22 +17,19 @@ export const TabUsers = () => {
   }, []);
 
   return (
-    <div className="mt-5 d-flex  justify-content-center">
-      <Scrollbars  className="scroll">
-      <Table responsive="sm" striped bordered hover>
-        <thead>
-          <tr className="p-1">
-            <th>Nombre</th>
-            <th>rol</th>
-            <th>Email</th>
-            <th>Registro</th>
-          </tr>
-        </thead>
-      </Table>
-      {users.map((user, id) => (
-        <TablaBack user={user} key={id} />
-      ))}
-    </Scrollbars>
+    <div className="mt-5 p-5 d-flex  justify-content-center">
+      <Scrollbars className="scroll-usuarios">
+        <Table responsive bordered>
+          <thead>
+            <tr>
+              <th>Usuarios</th>
+            </tr>
+          </thead>
+        </Table>
+        {users.map((user, id) => (
+          <TablaBack  user={user} key={id} />
+        ))}
+      </Scrollbars>
     </div>
   );
 };
