@@ -120,7 +120,7 @@ body{
 
 /*css aplicado a la tabla de usuarios*/
 .scroll-usuarios{
-  width: 600px !important;
+  width: 700px !important;
   height: 700px !important;
 }
 
@@ -129,4 +129,8 @@ body{
     width: 300px !important;
     height: 700px !important;
   }
+}
+
+.tabla {
+  table-layout: fixed;
 }

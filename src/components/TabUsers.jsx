@@ -17,11 +17,13 @@ export const TabUsers = () => {
   }, []);
 
   return (
-    <div className="mt-5 p-5 d-flex  justify-content-center">
+    <div className="mt-5 p-5 d-flex  justify-content-center  ">
       <Scrollbars className="scroll-usuarios">
-        <Table responsive bordered>
+        <Table responsive bordered className="tabla">
           <thead>
             <tr>
+              <th>Nombre</th>
+              <th>Rol</th>
               <th>Usuarios</th>
             </tr>
           </thead>
