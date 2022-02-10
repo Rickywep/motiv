@@ -3,6 +3,10 @@ import { Button, Image, Nav, Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 export default function NavAdmin() {
+  const cerrarSesion = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+  };
   return (
     <div>
       <Navbar className="fondo-nav" expand="lg">
@@ -47,6 +51,7 @@ export default function NavAdmin() {
               className="ml-auto mt-2 p-2 color-celeste-claro border-0"
               to="/login"
               as={NavLink}
+              onClick={cerrarSesion}
             >
               Cerrar sesión
             </Button>

@@ -1,68 +1,58 @@
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import Swal from "sweetalert2";
-import { useRef } from "react";
 import axios from "axios";
 
-export default function ModalMood() {
+export default function ModalMood({ token }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [mood, setMood] = useState("");
+  const [anon, setAnon] = useState(false);
 
+  const queryApy = async () => {
+    await axios
+      .post(
+        `https://api.meaningcloud.com/sentiment-2.1?key=82a16351d0c7666c340dbb2c5a66d4e7&of=json&txt=${mood}&lang=es`
+      )
+      .then((response) => {
+        let palabraConcepto;
+        if (response.data.sentimented_concept_list.length === 0) {
+          palabraConcepto = "ninguna";
+        } else {
+          palabraConcepto = response.data.sentimented_concept_list[0].form;
+        }
+        const polaridad = response.data.score_tag;
 
-  const [validated, setValidated] = useState(false);
-  const form = useRef();
-
-  
-  // state de moods
-  const [mood, setMood] = useState({
-    contenido: "",
-    anonimo:"" // TODO: consultar como tomar el valor de un checkbox para que sea anonimo.
-  });
-
-
-  //Extraer los valores
-  const { contenido, anonimo } = mood;
-
-// Crear contenido
-  const crearContenido = async () => {
-    await axios.post("http://localhost:4000/api/feedbacks", {
-      contenido,
-    });
+        createMood(polaridad, palabraConcepto);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
-
-  // capturar los input del usuario 
-  const handleChange = (e) => {
-    setMood({
-      ...ModalMood,
-      [e.target.name]: e.target.value,
-    });
+  const onChangeMood = (e) => {
+    setMood(e.target.value);
   };
-
-  const sendEmail = (e) => {
-    const form = e.currentTarget;
+  const onSubmit = (e) => {
     e.preventDefault();
-    if (form.checkValidity() === true) {
-      e.stopPropagation();
-      Swal.fire({
-        icon: "success",
-        title: "Mood enviado con éxito",
-        showConfirmButton: false,
-        timer: 2000,
-      });
-      crearContenido();   
-      //Reiniciar el form
-      setMood({
-        contenido: "",
-        anonimo:""
-      });
-      setValidated(false); //
-    } else {
-      setValidated(true);
-      Swal.fire({
-        icon: "error",
-        title: "campos vacios o datos incorrectos",
-      });
+    queryApy();
+  };
+
+  const createMood = async (polaridad, palabraConcepto) => {
+    try {
+      await axios.post(
+        "http://localhost:4000/api/moods",
+        {
+          contenido: mood,
+          anonimo: anon,
+          polaridad: polaridad,
+          palabra_concepto: palabraConcepto,
+        },
+        {
+          headers: { "x-auth-token": token },
+        }
+      );
+    } catch (error) {
+      alert(error.response.data.msg);
     }
   };
 
@@ -81,10 +71,8 @@ export default function ModalMood() {
         </Modal.Header>
         <Modal.Body>
           <Form
-            ref={form}
             noValidate
-            validated={validated}
-            onSubmit={sendEmail}
+            onSubmit={onSubmit}
             className="mx-auto form mb-5 p-2 "
           >
             <div>
@@ -93,17 +81,22 @@ export default function ModalMood() {
                   {" "}
                   Como te sientes hoy?
                   <Form.Control
-                    onChange={handleChange}
+                    onChange={onChangeMood}
                     required
                     name="contenido"
                     className="mt-2 modalResponsive"
                     type="text"
-                    value={contenido}
                     as="textarea"
                   />
                 </Form.Label>
                 <Form.Group className="mt-2" controlId="formBasicCheckbox">
-                  <Form.Check onChange={handleChange} type="checkbox" name="anonimo" value={anonimo} label="Anónimo" />
+                  <Form.Check
+                    onChange={onChangeMood}
+                    type="checkbox"
+                    name="anonimo"
+                    label="Anónimo"
+                    onChange={() => setAnon(!anon)}
+                  />
                 </Form.Group>
               </div>
             </div>

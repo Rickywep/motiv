@@ -6,8 +6,7 @@ import Cajas from "./Cajas";
 import ModalFeedBack from "./ModalFeedBack";
 import ModalMood from "./ModalMood";
 
-
-export default function CardUsuario() {
+export default function CardUsuario({ user, token }) {
   return (
     <div className="container d-flex flex-wrap justify-content-around mt-2 mb-5">
       <div>
@@ -15,18 +14,22 @@ export default function CardUsuario() {
           <Card.Img
             className="imgRedonda mt-2"
             variant="top"
-            src="https://res.cloudinary.com/dtbfspso5/image/upload/v1643139175/descarga_ovdszg.jpg"
+            src={
+              user.image
+                ? user.image
+                : "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+            }
           />
           <div className="d-flex justify-content-end me-5">
             <FontAwesomeIcon icon={faCamera} />
           </div>
 
           <Card.Body>
-            <Card.Title className="text-center">Ricky Moreno</Card.Title>
+            <Card.Title className="text-center">{user.nombre}</Card.Title>
             <hr />
             <Card.Text className="d-flex flex-wrap justify-content-around">
-                  <ModalMood />
-                  <ModalFeedBack />
+              <ModalMood token={token} />
+              <ModalFeedBack token={token}/>
             </Card.Text>
           </Card.Body>
         </Card>

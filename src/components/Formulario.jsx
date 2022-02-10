@@ -1,27 +1,14 @@
 import { Form, Button } from "react-bootstrap";
 import { useState } from "react";
 import Swal from "sweetalert2";
-import { useHistory } from "react-router-dom";
-import axios from "axios";
 
-
-export default function Formulario() {
+export default function Formulario({ login, user }) {
   const [input, setInput] = useState({
     email: "",
     password: "",
   });
-  const history = useHistory();
 
   const { password, email } = input;
-
-  // usuarios en local Storage
-  let usuariosIniciales = JSON.parse(localStorage.getItem("usuarios"));
-  if (!usuariosIniciales) {
-    usuariosIniciales = [];
-  }
-
-  // Array de usuario
-  const [usuarios, setUsuarios] = useState(usuariosIniciales);
 
   const handleChange = (event) => {
     const { value, name } = event.target;
@@ -29,46 +16,26 @@ export default function Formulario() {
     setInput(newInput);
   };
 
-  const login = async () => {
-    const response = await axios.post("http://localhost:4000/api/auth", {
-      email,
-      password,
-    });
-    return response.data.token;
-  };
-
-  const typeUser = async (token) => {
-    const response = await axios.get("http://localhost:4000/api/auth", {
-      headers: { "x-auth-token": token },
-    });
-
-    return response.data.usuario.rol;
-  };
-
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    const token = await login();
-    localStorage.setItem("token", token);
+    login(email, password);
 
-    const type = await typeUser(token);
-
-    if (type === "usuario") {
+    if (user.rol === "usuario") {
       Swal.fire({
         icon: "success",
         title: "Bienvenido Usuario",
         showConfirmButton: false,
         timer: 2000,
       });
-
-      history.push("/");
-    } else if (type === "admin") {
+      window.location.replace("/");
+    } else if (user.rol === "admin") {
       Swal.fire({
         icon: "success",
         title: "Bienvenido admin",
         showConfirmButton: false,
         timer: 2000,
       });
-      history.push("/Admin");
+      window.location.replace("/Admin");
     } else {
       Swal.fire({
         icon: "error",

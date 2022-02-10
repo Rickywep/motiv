@@ -5,14 +5,14 @@ import MyNavLogin from "../components/MyNavLogin";
 
 const token = localStorage.getItem("token");
 
-export default function Home() {
+export default function Home({ user }) {
   if (!token) {
     return <Redirect to="/login" />;
   }
   return (
     <div>
-      <MyNavLogin />
-      <CardUsuario />
+      <MyNavLogin user={user} />
+      <CardUsuario user={user} token={token} />
     </div>
   );
 }
