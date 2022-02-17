@@ -31,7 +31,7 @@ export default function NavAdmin() {
               </Nav.Link>
               <Nav.Link
                 as={NavLink}
-                to="/NewMood"
+                to="/Moods"
                 className="text-white"
                 href="#action2"
               >

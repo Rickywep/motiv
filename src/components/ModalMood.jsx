@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import axios from "axios";
 
@@ -8,6 +8,21 @@ export default function ModalMood({ token }) {
   const handleShow = () => setShow(true);
   const [mood, setMood] = useState("");
   const [anon, setAnon] = useState(false);
+  const [canAddMood, setCanAddMood] = useState(true);
+
+  useEffect(() => {
+    const getMood = async () => {
+      const respuesta = await axios.get(
+        "http://localhost:4000/api/moods/canAddMood",
+        {
+          headers: { "x-auth-token": token },
+        }
+      );
+      setCanAddMood(respuesta.data);
+    };
+
+    getMood();
+  }, [canAddMood]);
 
   const queryApy = async () => {
     await axios
@@ -24,6 +39,8 @@ export default function ModalMood({ token }) {
         const polaridad = response.data.score_tag;
 
         createMood(polaridad, palabraConcepto);
+        setShow(false);
+        setAnon(false);
       })
       .catch((error) => {
         console.log(error);
@@ -58,13 +75,18 @@ export default function ModalMood({ token }) {
 
   return (
     <>
-      <Button
-        className="border-0 bg-transparent text-primary"
-        onClick={handleShow}
-      >
-        New Mood
-      </Button>
-
+      {canAddMood ? (
+        <Button
+          className="border-0 bg-transparent text-primary"
+          onClick={handleShow}
+        >
+          New Mood
+        </Button>
+      ) : (
+        <Button className="border-0 bg-transparent text-primary" disabled>
+          Mood enviado
+        </Button>
+      )}
       <Modal show={show} size="lg" onHide={handleClose}>
         <Modal.Header className="fondo-titulo" closeButton>
           <Modal.Title className="text-white">Mood</Modal.Title>
@@ -95,6 +117,7 @@ export default function ModalMood({ token }) {
                     type="checkbox"
                     name="anonimo"
                     label="Anónimo"
+                    // eslint-disable-next-line react/jsx-no-duplicate-props
                     onChange={() => setAnon(!anon)}
                   />
                 </Form.Group>

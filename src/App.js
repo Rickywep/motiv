@@ -1,4 +1,4 @@
-import 'react-bootstrap-typeahead/css/Typeahead.css';
+import "react-bootstrap-typeahead/css/Typeahead.css";
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -7,9 +7,9 @@ import Perfil from "./pages/Perfil";
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
 import LoginAdmin from "./pages/LoginAdmin";
-import NewMood from "./pages/NewMood";
 import Users from "./pages/Users";
 import axios from "axios";
+import Moods from "./pages/Moods";
 
 export default function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -45,7 +45,7 @@ export default function App() {
     <Router>
       <Switch>
         <Route path="/" exact>
-          <Home user={user}  />
+          <Home user={user} />
         </Route>
         <Route path="/Login">
           <Login login={login} user={user} />
@@ -62,8 +62,8 @@ export default function App() {
         <Route path="/Users">
           <Users />
         </Route>
-        <Route path="/NewMood">
-          <NewMood />
+        <Route path="/Moods">
+          <Moods />
         </Route>
       </Switch>
     </Router>

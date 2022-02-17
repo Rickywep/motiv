@@ -16,9 +16,9 @@ export default function Formulario({ login, user }) {
     setInput(newInput);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    login(email, password);
+    await login(email, password);
 
     if (user.rol === "usuario") {
       Swal.fire({
@@ -39,7 +39,7 @@ export default function Formulario({ login, user }) {
     } else {
       Swal.fire({
         icon: "error",
-        title: "Campos vacios o datos incorrectos",
+        title: "Datos incorrectos",
       });
     }
   };

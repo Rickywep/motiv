@@ -23,6 +23,9 @@ const UsuariosSchema = mongoose.Schema({
     type: String,
     default: "usuario",
   },
+  lastDateMood: {
+    type: String,
+  },
   registro: {
     type: Date,
     default: Date.now(),
