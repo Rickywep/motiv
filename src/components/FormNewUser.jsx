@@ -103,7 +103,7 @@ export default function FormNewUser() {
             <Form.Control
               name="password"
               required
-              type="text"
+              type="password"
               placeholder="Ingresar Nombre del dueño"
               onChange={handleChange}
               value={password}

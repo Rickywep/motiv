@@ -71,6 +71,7 @@ export default function ModalMood({ token }) {
     } catch (error) {
       alert(error.response.data.msg);
     }
+    window.location.reload();
   };
 
   return (

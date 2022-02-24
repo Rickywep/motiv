@@ -10,35 +10,62 @@ import LoginAdmin from "./pages/LoginAdmin";
 import Users from "./pages/Users";
 import axios from "axios";
 import Moods from "./pages/Moods";
+import Swal from "sweetalert2";
 
 export default function App() {
-  const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState({});
 
+  const checkToken = async (token) => {
+    try {
+      const respuesta = await axios.get("http://localhost:4000/api/auth", {
+        headers: { "x-auth-token": token },
+      });
+      setUser(respuesta.data.usuario);
+      return respuesta.data.usuario;
+    } catch (error) {
+      console.log(error.response.data.msg);
+      localStorage.removeItem("token");
+    }
+  };
   useEffect(() => {
-    const checkToken = async () => {
-      try {
-        const respuesta = await axios.get("http://localhost:4000/api/auth", {
-          headers: { "x-auth-token": token },
-        });
-        setUser(respuesta.data.usuario);
-      } catch (error) {
-        console.log(error.response.data.msg);
-        localStorage.removeItem("token");
-        setToken("");
-      }
-    };
-    checkToken();
-  }, [token]);
+    const token = localStorage.getItem("token");
+    checkToken(token);
+  }, []);
 
   const login = async (email, password) => {
-    const response = await axios.post("http://localhost:4000/api/auth", {
-      email,
-      password,
-    });
-    const token = response.data.token;
-    setToken(token);
-    localStorage.setItem("token", token);
+    try {
+      const response = await axios.post("http://localhost:4000/api/auth", {
+        email,
+        password,
+      });
+      const token = response.data.token;
+      localStorage.setItem("token", token);
+
+      const userToken = await checkToken(token);
+
+      if (userToken.rol === "usuario") {
+        Swal.fire({
+          icon: "success",
+          title: "Bienvenido Usuario",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        window.location.replace("/");
+      } else if (userToken.rol === "admin") {
+        Swal.fire({
+          icon: "success",
+          title: "Bienvenido admin",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        window.location.replace("/Moods");
+      }
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Datos incorrectos",
+      });
+    }
   };
 
   return (
@@ -55,9 +82,6 @@ export default function App() {
         </Route>
         <Route path="/loginAdmin">
           <LoginAdmin />
-        </Route>
-        <Route path="/Admin">
-          <Admin />
         </Route>
         <Route path="/Users">
           <Users />

@@ -19,7 +19,7 @@ export const TabUsers = () => {
   return (
     <div className="mt-5 p-5 d-flex  justify-content-center  ">
       <Scrollbars className="scroll-usuarios">
-        <Table responsive bordered className="tabla">
+        <Table responsive striped bordered className="tabla bg-light">
           <thead>
             <tr>
               <th>Nombre</th>
@@ -27,10 +27,12 @@ export const TabUsers = () => {
               <th>Usuarios</th>
             </tr>
           </thead>
+          <tbody className="bg-transparent">
+            {users.map((user, id) => (
+              <TablaBack user={user} key={id} />
+            ))}
+          </tbody>
         </Table>
-        {users.map((user, id) => (
-          <TablaBack  user={user} key={id} />
-        ))}
       </Scrollbars>
     </div>
   );

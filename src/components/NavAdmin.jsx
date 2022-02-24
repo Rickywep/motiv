@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 export default function NavAdmin() {
   const cerrarSesion = () => {
     localStorage.removeItem("token");
-    window.location.reload();
+    window.location.replace("/");
   };
   return (
     <div>

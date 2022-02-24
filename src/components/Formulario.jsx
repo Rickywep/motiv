@@ -1,6 +1,5 @@
 import { Form, Button } from "react-bootstrap";
 import { useState } from "react";
-import Swal from "sweetalert2";
 
 export default function Formulario({ login, user }) {
   const [input, setInput] = useState({
@@ -20,28 +19,7 @@ export default function Formulario({ login, user }) {
     event.preventDefault();
     await login(email, password);
 
-    if (user.rol === "usuario") {
-      Swal.fire({
-        icon: "success",
-        title: "Bienvenido Usuario",
-        showConfirmButton: false,
-        timer: 2000,
-      });
-      window.location.replace("/");
-    } else if (user.rol === "admin") {
-      Swal.fire({
-        icon: "success",
-        title: "Bienvenido admin",
-        showConfirmButton: false,
-        timer: 2000,
-      });
-      window.location.replace("/Admin");
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Datos incorrectos",
-      });
-    }
+   
   };
   return (
     <Form onSubmit={handleSubmit} className="card mt-5 mx-auto formulario">
