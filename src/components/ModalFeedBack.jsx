@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import axios from "axios";
 import SearchUser from "./SearchUser";
+import Swal from "sweetalert2";
 
 export default function ModalFeedBack({ token }) {
+  const [validated, setValidated] = useState(false);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -19,8 +21,25 @@ export default function ModalFeedBack({ token }) {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    createFeedback({ ...feedback, colega: colega[0]._id });
+    const form = e.currentTarget;
+    if (form.checkValidity() === true) {
+      e.stopPropagation();
+      Swal.fire({
+        icon: "success",
+        title: "Feedback creado con éxito",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+      createFeedback({ ...feedback, colega: colega[0]._id });    
+    } else {
+      setValidated(true);
+      Swal.fire({
+        icon: "error",
+        title: "campos vacios o datos incorrectos",
+      });
+    }
   };
+
 
   const createFeedback = (feedback) => {
     return axios
@@ -48,7 +67,7 @@ export default function ModalFeedBack({ token }) {
             <div>
               <div className="card-body">
                 <Form.Label>A quien va?</Form.Label>
-                <SearchUser token={token} setColega={setColega} />
+                <SearchUser token={token} setColega={setColega}  />
 
                 <Form.Label
                   onChange={onChangeFeedback}
