@@ -11,7 +11,7 @@ export default function MyNavBar() {
             <Image
               style={{ width: "50px" }}
               src="https://res.cloudinary.com/dtbfspso5/image/upload/v1641438758/image_smpczk.png"
-              alt=""
+              alt="logo"
             />
           </Navbar.Brand>
           <div>
