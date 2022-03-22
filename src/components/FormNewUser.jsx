@@ -53,13 +53,12 @@ export default function FormNewUser() {
         nombre: "",
         email: "",
         password: "",
-        rol: "",
       });
     } else {
       setValidated(true);
       Swal.fire({
         icon: "error",
-        title: "campos vacios o datos incorrectos",
+        title: "No se pudo crear el usuario. Datos o campos incorrectos",
       });
     }
   };
@@ -92,7 +91,7 @@ export default function FormNewUser() {
             <Form.Control
               name="email"
               required
-              type="text"
+              type="email"
               placeholder="Ingresar email"
               onChange={handleChange}
               value={email}
@@ -104,7 +103,7 @@ export default function FormNewUser() {
               name="password"
               required
               type="password"
-              placeholder="Ingresar Nombre del dueño"
+              placeholder="Ingresar contraseña"
               onChange={handleChange}
               value={password}
             />
@@ -114,12 +113,12 @@ export default function FormNewUser() {
 
       <div className="d-flex justify-content-center mb-2">
         <Button
-          className=" text-white p-2 color-boton-modal border-0"
           size="sm"
+          className=" ml-auto mt-2 p-2 color-celeste-claro border-0"
           type="submit"
           value="Send"
         >
-          <b>Crear</b>
+          Crear
         </Button>
       </div>
     </Form>
