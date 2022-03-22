@@ -2,6 +2,7 @@ import { Form, Button } from "react-bootstrap";
 import { useState } from "react";
 
 export default function Formulario({ login, user }) {
+  const [validated, setValidated] = useState(false);
   const [input, setInput] = useState({
     email: "",
     password: "",
@@ -16,18 +17,23 @@ export default function Formulario({ login, user }) {
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault();  
+    const form = event.currentTarget;
     await login(email, password);
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
 
-   
+    setValidated(true);
   };
   return (
-    <Form onSubmit={handleSubmit} className="card mt-5 mx-auto formulario">
+    <Form noValidate validated={validated}  onSubmit={handleSubmit} className="card mt-5 mx-auto formulario">
       <div className="fondo-titulo">
         <p className="p-2 mt-2 text-white ms-3">MotivWork</p>
       </div>
       <div className="p-4">
-        <Form.Group className="mb-4" controlId="formBasicEmail">
+        <Form.Group className="mb-4"  controlId="validationCustom01">
           <Form.Label>Email</Form.Label>
           <Form.Control
             name="email"
@@ -37,7 +43,7 @@ export default function Formulario({ login, user }) {
             required
           />
         </Form.Group>
-        <Form.Group className="mb-4" controlId="formBasicPassword">
+        <Form.Group className="mb-4" controlId="validationCustom02">
           <Form.Label>Password</Form.Label>
           <Form.Control
             name="password"
