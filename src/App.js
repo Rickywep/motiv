@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Perfil from "./pages/Perfil";
 import Home from "./pages/Home";
-import Admin from "./pages/Admin";
 import LoginAdmin from "./pages/LoginAdmin";
 import Users from "./pages/Users";
 import axios from "axios";

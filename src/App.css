@@ -134,3 +134,34 @@ body{
 .tabla {
   table-layout: fixed;
 }
+
+/*imput selector de foto*/
+.file-select {
+  position: relative;
+  display: inline-block;
+}
+
+.file-select::before {
+  color: white;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  border-radius: 3px;
+  content: 'Seleccionar'; /* testo por defecto */
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.file-select input[type="file"] {
+  opacity: 0;
+  width: 200px;
+  height: 32px;
+  display: inline-block;
+}
+
+#src-file1::before {
+  content: url(https://res.cloudinary.com/dtbfspso5/image/upload/v1647901687/camera--v1_jyfg1v.png);
+}
