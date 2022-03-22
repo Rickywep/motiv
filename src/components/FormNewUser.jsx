@@ -114,7 +114,7 @@ export default function FormNewUser() {
       <div className="d-flex justify-content-center mb-2">
         <Button
           size="sm"
-          className=" ml-auto mt-2 p-2 color-celeste-claro border-0"
+          className=" ml-auto mt-2 w-25 p-2 color-celeste-claro border-0"
           type="submit"
           value="Send"
         >
