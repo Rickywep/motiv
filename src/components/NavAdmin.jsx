@@ -11,7 +11,7 @@ export default function NavAdmin() {
     <div>
       <Navbar className="fondo-nav" expand="lg">
         <div className="container-fluid d-flex justify-content-around">
-          <Navbar.Brand className="d-flex flex-wrap" to="/" exact as={NavLink}>
+          <Navbar.Brand className="d-flex flex-wrap" to="/" exact  href="#action2" as={NavLink}>
             <Image
               style={{ width: "50px" }}
               src="https://res.cloudinary.com/dtbfspso5/image/upload/v1641438758/image_smpczk.png"
@@ -38,13 +38,6 @@ export default function NavAdmin() {
                 Mood
               </Nav.Link>
             </div>
-            <Nav.Link
-              className="mt-2 text-decoration-none text-white"
-              as={NavLink}
-              to="/Admin"
-            >
-              Admin
-            </Nav.Link>
             <Button
               size="sm"
               active
